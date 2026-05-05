@@ -207,6 +207,40 @@ button:active {
     }
 }
 
+#reviewBtn {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  top: auto;
+  transform: none;
+  padding: 16px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  cursor: pointer;
+  font-weight: 700;
+  background: rgba(255,255,255,0.08);
+  color: #f6fbff;
+  z-index: 999;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
+  min-width: 210px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+#reviewBtn:hover {
+  background: rgba(255,255,255,0.14);
+  transform: translateY(-2px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.26);
+}
+
+#reviewBtn::after {
+  content: '→';
+  display: inline-block;
+  margin-left: 10px;
+  opacity: 0.95;
+}
+
 @media (max-width: 650px) {
     body {
         padding: 0 12px 24px;
@@ -251,6 +285,10 @@ button:active {
 
     <button id="nextBtn" onclick="nextQuestion()" class="hidden">Next</button>
 </div>
+
+<button id="reviewBtn" onclick="goToReview()">
+  Review before starting
+</button>
 
 <div id="summary" class="card hidden"></div>
 
@@ -1200,6 +1238,10 @@ let examQuestions = [];
 let current = 0;
 let score = 0;
 let locked = false;
+
+function goToReview() {
+    window.location.href = "review.html";
+}
 
 function startExam(num) {
     examQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, num);
