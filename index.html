@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BSIS Entrance Exam Reviewer</title>
 
 <style>
@@ -254,6 +255,52 @@ button:active {
     button {
         padding: 14px 16px;
         font-size: 0.97rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0 10px 24px;
+    }
+
+    .card {
+        padding: 20px;
+        border-radius: 18px;
+        margin-top: 18px;
+    }
+
+    button {
+        padding: 14px 16px;
+        font-size: 1rem;
+    }
+
+    #reviewBtn {
+        right: 12px;
+        bottom: 12px;
+        padding: 12px 18px;
+        min-width: 180px;
+        font-size: 0.9rem;
+    }
+
+    h2 {
+        margin: 20px auto 8px;
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    #question {
+        font-size: clamp(1.2rem, 4vw, 1.6rem);
+    }
+
+    .progress {
+        font-size: 1rem;
+    }
+
+    #result {
+        font-size: 1.1rem;
+    }
+
+    #explanation {
+        font-size: 1rem;
     }
 }
 </style>
