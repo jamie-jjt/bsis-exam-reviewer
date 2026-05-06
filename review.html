@@ -221,12 +221,8 @@
         code { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; color: var(--accent-green); font-family: monospace; }
 
         /* ===== Responsive ===== */
-        @media (max-width: 1000px) {
-            body { flex-direction: column; }
-            .sidebar { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border-light); padding: 20px; }
-            .main-content { margin-left: 0; padding: 20px; }
-            .diagram-container { flex-direction: column; gap: 15px; }
-            .arrow { transform: rotate(90deg); }
+        .vertical-diagram {
+            flex-direction: column;
         }
     </style>
 </head>
@@ -242,11 +238,16 @@
     <div class="nav-group-title">Tech Fundamentals</div>
     <a href="#it-basics" class="nav-link">3. IT Fundamentals</a>
     <a href="#web-tech" class="nav-link">4. Web & Tech Basics</a>
-    <a href="#data-concepts" class="nav-link">5. Data Concepts</a>
+    <a href="#networking" class="nav-link">5. Networking Basics</a>
+    <a href="#programming" class="nav-link">6. Programming Fundamentals</a>
+    <a href="#databases" class="nav-link">7. Database Management</a>
+    <a href="#cybersecurity" class="nav-link">8. Cybersecurity Basics</a>
+    <a href="#systems" class="nav-link">9. Systems Analysis & Design</a>
+    <a href="#data-concepts" class="nav-link">10. Data Concepts</a>
 
     <div class="nav-group-title">Communication</div>
-    <a href="#reading" class="nav-link">6. Reading Comprehension</a>
-    <a href="#english" class="nav-link">7. English Grammar</a>
+    <a href="#reading" class="nav-link">11. Reading Comprehension</a>
+    <a href="#english" class="nav-link">12. English Grammar</a>
 
     <a href="index.html" class="btn-back">Take the Quiz</a>
 
@@ -469,10 +470,292 @@
     </section>
 
     <!-- ==========================================
-         SECTION 5: DATA CONCEPTS 
+         SECTION 5: NETWORKING BASICS 
+         ========================================== -->
+    <section id="networking" style="margin-top: 50px;">
+        <h2>5. Networking Basics</h2>
+        
+        <div class="card exp-card">
+            <h4>📖 Simple Explanation</h4>
+            <p>Networking is the backbone of Information Systems. It allows devices to communicate and share resources. Understanding networks is crucial for designing systems that connect people, data, and applications.</p>
+        </div>
+
+        <div class="card breakdown-card">
+            <h4>⚙️ Structured Breakdown: OSI 7-Layer Model</h4>
+            <p>The OSI model is a conceptual framework that standardizes the functions of a telecommunication or computing system. It divides network communication into 7 layers, each with specific responsibilities.</p>
+            <div class="diagram-container vertical-diagram">
+                <div class="diagram-box" style="border-color: var(--accent-purple);">7. Application<br><small>(User Interface)</small></div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box" style="border-color: var(--accent-blue);">6. Presentation<br><small>(Data Translation)</small></div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box" style="border-color: var(--accent-green);">5. Session<br><small>(Connection Management)</small></div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box" style="border-color: var(--accent-orange);">4. Transport<br><small>(End-to-End Communication)</small></div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box" style="border-color: var(--accent-red);">3. Network<br><small>(Routing)</small></div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box" style="border-color: var(--accent-purple);">2. Data Link<br><small>(Frame Transmission)</small></div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box" style="border-color: var(--accent-blue);">1. Physical<br><small>(Hardware)</small></div>
+            </div>
+        </div>
+
+        <details>
+            <summary>Click to view Layer Explanations</summary>
+            <div class="card example-card">
+                <h4>💡 Layer Functions</h4>
+                <ul>
+                    <li><strong>Physical (1):</strong> Cables, switches, electrical signals.</li>
+                    <li><strong>Data Link (2):</strong> MAC addresses, error detection (e.g., Ethernet).</li>
+                    <li><strong>Network (3):</strong> IP addresses, routing (e.g., IP, routers).</li>
+                    <li><strong>Transport (4):</strong> Reliable delivery (e.g., TCP, UDP).</li>
+                    <li><strong>Session (5):</strong> Manages connections between applications.</li>
+                    <li><strong>Presentation (6):</strong> Data formatting, encryption.</li>
+                    <li><strong>Application (7):</strong> User-facing protocols (e.g., HTTP, FTP).</li>
+                </ul>
+            </div>
+        </details>
+
+        <div class="card tips-card">
+            <h4>⚡ Quick Tips</h4>
+            <ul>
+                <li><strong>Mnemonic:</strong> "Please Do Not Throw Sausage Pizza Away" for layers 1-7.</li>
+                <li><strong>Real-world:</strong> When you browse a website, data travels from Application (browser) down to Physical (network cable) and back up.</li>
+            </ul>
+        </div>
+
+        <div class="card mistakes-card">
+            <h4>⚠️ Common Mistakes</h4>
+            <p>Confusing layers: Remember, lower layers handle hardware/technical details, higher layers handle user/application logic.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: PROGRAMMING FUNDAMENTALS 
+         ========================================== -->
+    <section id="programming" style="margin-top: 50px;">
+        <h2>6. Programming Fundamentals</h2>
+        
+        <div class="card exp-card">
+            <h4>📖 Simple Explanation</h4>
+            <p>Programming is the process of writing instructions for computers to solve problems. In BSIS, you'll learn to automate processes, analyze data, and build applications that support business needs.</p>
+        </div>
+
+        <div class="card breakdown-card">
+            <h4>⚙️ Structured Breakdown: Key Concepts</h4>
+            <ul>
+                <li><strong>Algorithms:</strong> Step-by-step procedures to solve problems.</li>
+                <li><strong>Variables:</strong> Containers for storing data (e.g., numbers, text).</li>
+                <li><strong>Control Structures:</strong> Loops (repeat actions) and conditionals (if-then decisions).</li>
+                <li><strong>Functions:</strong> Reusable blocks of code.</li>
+            </ul>
+        </div>
+
+        <details>
+            <summary>Click to view Flowchart Example</summary>
+            <div class="card example-card">
+                <h4>💡 Flowchart for Login Process</h4>
+                <p>Flowcharts visually represent algorithms. Here's a simple login flowchart:</p>
+                <div class="diagram-container vertical-diagram">
+                    <div class="diagram-box" style="border-radius: 50%;">Start</div>
+                    <div class="arrow">↓</div>
+                    <div class="diagram-box">Enter Username & Password</div>
+                    <div class="arrow">↓</div>
+                    <div class="diagram-box" style="border-color: var(--accent-orange);">Check Credentials</div>
+                    <div class="arrow">↓</div>
+                    <div class="diagram-box" style="background: var(--accent-green); color: #081122;">Valid?</div>
+                    <div style="display: flex; justify-content: space-around; width: 100%;">
+                        <div style="text-align: center;">
+                            <div class="arrow">→ Yes</div>
+                            <div class="diagram-box" style="border-color: var(--accent-green);">Login Success</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div class="arrow">→ No</div>
+                            <div class="diagram-box" style="border-color: var(--accent-red);">Show Error</div>
+                        </div>
+                    </div>
+                    <div class="arrow">↓</div>
+                    <div class="diagram-box" style="border-radius: 50%;">End</div>
+                </div>
+            </div>
+        </details>
+
+        <div class="card tips-card">
+            <h4>⚡ Quick Tips</h4>
+            <ul>
+                <li><strong>Pseudocode:</strong> Write algorithms in plain English before coding (e.g., "If password correct, then login").</li>
+                <li><strong>Debugging:</strong> Test small parts of code and use print statements to check values.</li>
+            </ul>
+        </div>
+
+        <div class="card mistakes-card">
+            <h4>⚠️ Common Mistakes</h4>
+            <p>Off-by-one errors in loops: Remember, arrays start at index 0 in most languages.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: DATABASE MANAGEMENT 
+         ========================================== -->
+    <section id="databases" style="margin-top: 50px;">
+        <h2>7. Database Management</h2>
+        
+        <div class="card exp-card">
+            <h4>📖 Simple Explanation</h4>
+            <p>Databases store and organize data for easy retrieval. In IS, databases power everything from student records to e-commerce transactions.</p>
+        </div>
+
+        <div class="card breakdown-card">
+            <h4>⚙️ Structured Breakdown: Database Concepts</h4>
+            <ul>
+                <li><strong>Tables:</strong> Collections of related data (e.g., Students table).</li>
+                <li><strong>Records/Rows:</strong> Individual entries in a table.</li>
+                <li><strong>Fields/Columns:</strong> Categories of data (e.g., Name, Age).</li>
+                <li><strong>Keys:</strong> Primary (unique identifier) and Foreign (links tables).</li>
+            </ul>
+        </div>
+
+        <details>
+            <summary>Click to view ER Diagram Example</summary>
+            <div class="card example-card">
+                <h4>💡 Entity-Relationship Diagram</h4>
+                <p>ER diagrams show relationships between entities. Example: Students enroll in Courses.</p>
+                <div class="diagram-container">
+                    <div class="diagram-box">Student<br><small>ID, Name, Email</small></div>
+                    <div class="arrow">—— Enrolls ——</div>
+                    <div class="diagram-box">Course<br><small>Code, Title, Credits</small></div>
+                </div>
+                <p>Relationship: One student can enroll in many courses (many-to-many).</p>
+            </div>
+        </details>
+
+        <div class="card example-card">
+            <h4>💡 Basic SQL Commands</h4>
+            <ul>
+                <li><strong>SELECT:</strong> Retrieve data (e.g., SELECT name FROM students).</li>
+                <li><strong>INSERT:</strong> Add new records.</li>
+                <li><strong>UPDATE:</strong> Modify existing data.</li>
+                <li><strong>DELETE:</strong> Remove records.</li>
+            </ul>
+        </div>
+
+        <div class="card tips-card">
+            <h4>⚡ Quick Tips</h4>
+            <ul>
+                <li><strong>Normalization:</strong> Organize data to reduce redundancy (e.g., separate addresses into their own table).</li>
+                <li><strong>Backup:</strong> Always backup databases to prevent data loss.</li>
+            </ul>
+        </div>
+
+        <div class="card mistakes-card">
+            <h4>⚠️ Common Mistakes</h4>
+            <p>SQL injection: Never insert user input directly into queries; use prepared statements.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 8: CYBERSECURITY BASICS 
+         ========================================== -->
+    <section id="cybersecurity" style="margin-top: 50px;">
+        <h2>8. Cybersecurity Basics</h2>
+        
+        <div class="card exp-card">
+            <h4>📖 Simple Explanation</h4>
+            <p>Cybersecurity protects information systems from threats. In BSIS, you'll design secure systems to safeguard data and privacy.</p>
+        </div>
+
+        <div class="card breakdown-card">
+            <h4>⚙️ Structured Breakdown: Key Threats & Defenses</h4>
+            <table>
+                <tr><th>Threat</th><th>Description</th><th>Defense</th></tr>
+                <tr><td>Malware</td><td>Virus, ransomware</td><td>Antivirus software</td></tr>
+                <tr><td>Phishing</td><td>Fake emails/websites</td><td>Verify sources</td></tr>
+                <tr><td>Weak Passwords</td><td>Easy to guess</td><td>Strong, unique passwords</td></tr>
+                <tr><td>Data Breaches</td><td>Unauthorized access</td><td>Encryption, access controls</td></tr>
+            </table>
+        </div>
+
+        <div class="card example-card">
+            <h4>💡 CIA Triad</h4>
+            <p>The three pillars of information security:</p>
+            <div class="diagram-container">
+                <div class="diagram-box" style="border-color: var(--accent-blue);">Confidentiality<br><small>Keep data private</small></div>
+                <div class="arrow">•</div>
+                <div class="diagram-box" style="border-color: var(--accent-green);">Integrity<br><small>Data accuracy</small></div>
+                <div class="arrow">•</div>
+                <div class="diagram-box" style="border-color: var(--accent-orange);">Availability<br><small>Data accessible when needed</small></div>
+            </div>
+        </div>
+
+        <div class="card tips-card">
+            <h4>⚡ Quick Tips</h4>
+            <ul>
+                <li><strong>Two-Factor Authentication:</strong> Adds an extra layer of security beyond passwords.</li>
+                <li><strong>Regular Updates:</strong> Keep software patched to fix vulnerabilities.</li>
+            </ul>
+        </div>
+
+        <div class="card mistakes-card">
+            <h4>⚠️ Common Mistakes</h4>
+            <p>Clicking suspicious links: Always hover to check URLs before clicking.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 9: SYSTEMS ANALYSIS & DESIGN 
+         ========================================== -->
+    <section id="systems" style="margin-top: 50px;">
+        <h2>9. Systems Analysis & Design</h2>
+        
+        <div class="card exp-card">
+            <h4>📖 Simple Explanation</h4>
+            <p>Systems Analysis & Design (SAD) is the process of planning and creating information systems. It involves understanding user needs and designing solutions.</p>
+        </div>
+
+        <div class="card breakdown-card">
+            <h4>⚙️ Structured Breakdown: SDLC Phases</h4>
+            <ol>
+                <li><strong>Planning:</strong> Define scope and objectives.</li>
+                <li><strong>Analysis:</strong> Gather requirements from users.</li>
+                <li><strong>Design:</strong> Create system specifications.</li>
+                <li><strong>Implementation:</strong> Build the system.</li>
+                <li><strong>Testing:</strong> Verify functionality.</li>
+                <li><strong>Deployment:</strong> Roll out to users.</li>
+                <li><strong>Maintenance:</strong> Ongoing support and updates.</li>
+            </ol>
+        </div>
+
+        <div class="card example-card">
+            <h4>💡 Use Case Diagram</h4>
+            <p>Use cases show interactions between users (actors) and the system.</p>
+            <div class="diagram-container vertical-diagram">
+                <div class="diagram-box">User (Actor)</div>
+                <div class="arrow">→</div>
+                <div class="diagram-box" style="border-color: var(--accent-blue);">Login to System</div>
+                <div class="arrow">↓</div>
+                <div class="diagram-box">System</div>
+            </div>
+        </div>
+
+        <div class="card tips-card">
+            <h4>⚡ Quick Tips</h4>
+            <ul>
+                <li><strong>User-Centered Design:</strong> Always involve end-users in requirements gathering.</li>
+                <li><strong>Prototyping:</strong> Build quick models to test ideas before full development.</li>
+            </ul>
+        </div>
+
+        <div class="card mistakes-card">
+            <h4>⚠️ Common Mistakes</h4>
+            <p>Scope Creep: Adding features without controlling project boundaries.</p>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 10: DATA CONCEPTS 
          ========================================== -->
     <section id="data-concepts" style="margin-top: 50px;">
-        <h2>5. Data & Information Concepts</h2>
+        <h2>10. Data & Information Concepts</h2>
 
         <div class="card exp-card">
             <h4>📖 Simple Explanation</h4>
@@ -514,10 +797,10 @@
     </section>
 
     <!-- ==========================================
-         SECTION 6: READING COMPREHENSION 
+         SECTION 11: READING COMPREHENSION 
          ========================================== -->
     <section id="reading" style="margin-top: 50px;">
-        <h2>6. Reading Comprehension</h2>
+        <h2>11. Reading Comprehension</h2>
 
         <div class="card exp-card">
             <h4>📖 Simple Explanation</h4>
@@ -540,10 +823,10 @@
     </section>
 
     <!-- ==========================================
-         SECTION 7: ENGLISH & COMMUNICATION 
+         SECTION 12: ENGLISH & COMMUNICATION 
          ========================================== -->
     <section id="english" style="margin-top: 50px;">
-        <h2>7. English & Communication</h2>
+        <h2>12. English & Communication</h2>
 
         <div class="card exp-card">
             <h4>📖 Simple Explanation</h4>
