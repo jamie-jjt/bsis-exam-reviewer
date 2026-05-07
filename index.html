@@ -56,6 +56,7 @@ h2 span {
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.32);
     backdrop-filter: blur(16px);
     animation: floatIn 0.45s ease-out both;
+    position: relative;
 }
 
 button {
@@ -88,6 +89,16 @@ button:active {
 #nextBtn {
     background: linear-gradient(135deg, #408cff, #45e9ff);
     color: #081122;
+}
+
+#reviewFirst {
+    background: rgba(255, 255, 255, 0.08);
+    color: #eef2ff;
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+#reviewFirst:hover {
+    background: rgba(255, 255, 255, 0.14);
 }
 
 #start button:hover,
@@ -208,38 +219,28 @@ button:active {
     }
 }
 
-#reviewBtn {
-  position: fixed;
-  right: 22px;
-  bottom: 22px;
-  top: auto;
-  transform: none;
-  padding: 16px 22px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.18);
-  cursor: pointer;
-  font-weight: 700;
-  background: rgba(255,255,255,0.08);
-  color: #f6fbff;
-  z-index: 999;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.22);
-  min-width: 210px;
-  text-align: center;
-  backdrop-filter: blur(12px);
-  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+#stopBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 10px 14px;
+    margin: 0 0 18px 0;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    color: #dbe5ff;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    transition: background 0.25s ease, transform 0.25s ease;
 }
 
-#reviewBtn:hover {
-  background: rgba(255,255,255,0.14);
-  transform: translateY(-2px);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.26);
-}
-
-#reviewBtn::after {
-  content: '→';
-  display: inline-block;
-  margin-left: 10px;
-  opacity: 0.95;
+#stopBtn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.14);
 }
 
 @media (max-width: 650px) {
@@ -274,14 +275,6 @@ button:active {
         font-size: 1rem;
     }
 
-    #reviewBtn {
-        right: 12px;
-        bottom: 12px;
-        padding: 12px 18px;
-        min-width: 180px;
-        font-size: 0.9rem;
-    }
-
     h2 {
         margin: 20px auto 8px;
         font-size: clamp(2rem, 6vw, 3rem);
@@ -314,9 +307,14 @@ button:active {
     <p style="margin-bottom: 16px; color: #c7d3f1; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;">Select Exam:</p>
     <button onclick="startExam(20)">20 Questions</button>
     <button onclick="startExam(50)">50 Questions</button>
+    <div style="margin-top: 18px; color: #d3def7; font-size: 0.95rem; line-height: 1.6;">
+        Want a quick refresher before starting? 
+        <button id="reviewFirst" onclick="goToReview()">Review first</button>
+    </div>
 </div>
 
 <div id="exam" class="card hidden">
+    <button id="stopBtn" onclick="returnToMenu()">← Back</button>
     <div class="progress">
         <span id="progressText">Exam in progress</span>
         <span id="progressPercent">0%</span>
@@ -329,13 +327,8 @@ button:active {
 
     <p id="result"></p>
     <p id="explanation"></p>
-
     <button id="nextBtn" onclick="nextQuestion()" class="hidden">Next</button>
 </div>
-
-<button id="reviewBtn" onclick="goToReview()">
-  Review before starting
-</button>
 
 <div id="summary" class="card hidden"></div>
 
@@ -1288,6 +1281,24 @@ let locked = false;
 
 function goToReview() {
     window.location.href = "review.html";
+}
+
+function returnToMenu() {
+    examQuestions = [];
+    current = 0;
+    score = 0;
+    locked = false;
+
+    document.getElementById("exam").classList.add("hidden");
+    document.getElementById("summary").classList.add("hidden");
+    document.getElementById("start").classList.remove("hidden");
+    document.getElementById("nextBtn").classList.add("hidden");
+    document.getElementById("progressText").innerText = "Ready to start";
+    document.getElementById("progressPercent").innerText = "0%";
+    document.getElementById("progressBar").style.width = "0%";
+    document.getElementById("result").innerText = "";
+    document.getElementById("explanation").innerText = "";
+    document.getElementById("choices").innerHTML = "";
 }
 
 function startExam(num) {
