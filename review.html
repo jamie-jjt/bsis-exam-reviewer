@@ -34,7 +34,10 @@
             background-color: var(--bg-main);
             color: var(--text-primary);
             display: flex;
+            justify-content: center;
             line-height: 1.6;
+            min-height: 100vh;
+            padding-top: 0;
         }
 
         /* ===== Layout ===== */
@@ -49,13 +52,21 @@
             padding: 30px 20px;
             overflow-y: auto;
             z-index: 100;
+            transform: translateX(-120%);
+            transition: transform 0.25s ease;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
         }
 
         .main-content {
-            margin-left: 300px;
             padding: 40px;
             max-width: 1000px;
-            width: 100%;
+            width: min(100%, 1000px);
+            margin: 0 auto;
+            flex: 1 0 auto;
+            transition: margin-left 0.25s ease;
         }
 
         /* ===== Typography & Headers ===== */
@@ -220,15 +231,216 @@
         li { margin-bottom: 8px; }
         code { background: rgba(0,0,0,0.5); padding: 2px 6px; border-radius: 4px; color: var(--accent-green); font-family: monospace; }
 
+        /* ===== Mobile Header & Overlay ===== */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 110;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            padding: 14px 20px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .mobile-title {
+            font-size: 1rem;
+            color: var(--text-primary);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin: 0;
+        }
+
+        .menu-toggle {
+            width: 42px;
+            height: 42px;
+            border: 1px solid rgba(255,255,255,0.16);
+            background: transparent;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            padding: 8px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 999px;
+        }
+
+        #sidebar-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 120;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 105;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .overlay.visible {
+            display: block;
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .pc-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 110;
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid var(--border-light);
+            padding: 14px 20px;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+        }
+
+        .menu-toggle.hidden {
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border-light);
+            padding: 30px 20px;
+            overflow-y: auto;
+            z-index: 110;
+            transform: translateX(0);
+            transition: transform 0.25s ease;
+        }
+
+        .sidebar-close {
+            display: block;
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: rgba(255,255,255,0.08);
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            line-height: 1;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-120%);
+        }
+
         /* ===== Responsive ===== */
         .vertical-diagram {
             flex-direction: column;
+        }
+
+        @media (max-width: 980px) {
+            .sidebar {
+                width: min(280px, 85vw);
+                transform: translateX(-120%);
+            }
+
+            .sidebar-close {
+                display: block;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            body {
+                padding-top: 68px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            #sidebar-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .main-content {
+                padding: 16px 14px 24px;
+            }
+
+            .nav-link {
+                font-size: 0.92rem;
+                padding: 11px 13px;
+            }
+
+            .btn-back {
+                padding: 14px;
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (min-width: 981px) {
+            .pc-header {
+                display: flex;
+            }
+
+            .main-content {
+                padding-top: 108px;
+            }
         }
     </style>
 </head>
 <body>
 
+<div class="mobile-header">
+    <h2 class="mobile-title">Review Guide</h2>
+    <button class="menu-toggle" aria-expanded="false" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
+<div class="pc-header">
+    <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</div>
+<div class="overlay"></div>
+
 <aside class="sidebar">
+    <button class="sidebar-close" aria-label="Close menu">×</button>
     <h2 style="font-size: 1.5rem; text-align: center; border: none;">Review Menu</h2>
     
     <div class="nav-group-title">Aptitude & Math</div>
@@ -880,6 +1092,52 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        const menuToggles = document.querySelectorAll('.menu-toggle');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.overlay');
+        const closeButton = document.querySelector('.sidebar-close');
+
+        const closeMenu = () => {
+            sidebar.classList.add('hidden');
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+            menuToggles.forEach(t => {
+                t.setAttribute('aria-expanded', 'false');
+                t.classList.remove('hidden');
+            });
+        };
+
+        const openMenu = () => {
+            sidebar.classList.remove('hidden');
+            sidebar.classList.add('open');
+            overlay.classList.add('visible');
+            menuToggles.forEach(t => {
+                t.setAttribute('aria-expanded', 'true');
+                t.classList.add('hidden');
+            });
+        };
+
+        menuToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                if (sidebar.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        });
+
+        overlay.addEventListener('click', closeMenu);
+        closeButton.addEventListener('click', closeMenu);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 980) {
+                    closeMenu();
+                }
+            });
         });
     });
 </script>
